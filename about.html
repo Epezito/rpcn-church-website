@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RPCN Abakaliki Parish — Official Website of The Reformed Presbyterian Church of Nigeria Abakaliki Parish </title>
+  <meta name="description" content="The Reformed Presbyterian Church of Nigeria (RPCN) Abakaliki Parish - worship with us. Service times, events, sermons, and contact." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- ============== NAVBAR ============== -->
+  
+  <header>
+    <nav class="nav" id="nav">
+      <a class="brand" href="#home" aria-label="RPCN Home">
+        <img src="pics/rpcn1.png" alt="RPCN Logo" onerror="this.style.display='none'" loading="lazy"/>
+        <span class="title">
+          <span>The Reformed Presbyterian Church of Nigeria</span>
+          <small>Abakaliki Parish</small>
+        </span>
+      </a>
+      <button class="burger" id="burger" aria-label="Open Menu">☰</button>
+      <ul id="menu">
+        <li><a class="link" href="index.html">Home</a></li>
+        <li><a class="link" href="about.html">About Us</a></li>
+        <li><a class="link" href="sermons.html">Sermons</a></li>
+        <li><a class="link" href="times.html">Our Church Services</a></li>
+        <li><a class="link" href="events.html">Events</a></li>
+        <li><a class="link" href="giving.html">Giving</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About RPCN Abakaliki Parish</h2>
+      <p class="section-sub">Christ is the Head of the Church. We exist to make disciples through faithful preaching, prayer, sacraments, and service.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Our Beliefs</h3>
+          <p class="muted">We hold to the authority of Scripture and the historic Reformed confessions. Salvation is by grace alone, through faith alone, in Christ alone.</p>
+        </div>
+        <div class="card">
+          <h3>Our Mission</h3>
+          <p class="muted">To glorify God by proclaiming the Gospel, discipling believers, and loving our neighbours in word and deed.</p>
+        </div>
+        <div class="card">
+          <h3>Visit Us</h3>
+          <p class="muted">You’re welcome at any of our assemblies. Come as you are—there is a place for you and your family.</p>
+        </div>
+      </div>
+      <p class="banner" style="margin-top:1rem">Ebonyi State University community — you are especially welcome this semester!</p>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>RPCN</strong>
+        <p class="muted">Rooted in Scripture • Centered on Christ. You are welcome to worship with us this Sunday.</p>
+      </div>
+      <div>
+        <strong>Quick Links</strong>
+        <ul style="list-style:none; padding:0; margin-top:.5rem; display:grid; gap:.35rem;">
+          <li><a class="link" href="index.html">Home</a></li>
+        <li><a class="link" href="about.html">About Us</a></li>
+        <li><a class="link" href="sermons.html">Sermons</a></li>
+        <li><a class="link" href="times.html">Our Church Services</a></li>
+        <li><a class="link" href="events.html">Events</a></li>
+        <li><a class="link" href="giving.html">Giving</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Address</strong>
+        <p class="muted">No. 60 Udemeuze Street, Abakaliki, Ebonyi State, Nigeria</p>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> The Reformed Presbyterian Church of Nigeria. All rights reserved.</div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Message sent. Thank you!</div>
+
+<script>
+
+    // Mobile menu toggle
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger?.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Scroll style for nav
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 6);
+    document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); menu.classList.remove('open'); }
+      });
+    });
+
+    // Contact form (front‑end only)
+    const form = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      // Simulate success (replace with real endpoint later)
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+      form.reset();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+</script>
+</body>
+</html>
